@@ -1,7 +1,13 @@
 import styled from 'styled-components';
+import Link from 'next/link';
+import Layout from '../components/Layout';
 
-const Title = styled.h1``;
+const Text = styled.p``;
 
-const Index = () => <Title>Hello</Title>;
+const Index = () => (
+  <Layout title="home">
+    <Text>Welcome to the home page.</Text>
+  </Layout>
+);
 
 export default Index;
