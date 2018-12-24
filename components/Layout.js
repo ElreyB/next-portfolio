@@ -1,5 +1,16 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import Link from 'next/link';
+import Head from 'next/head';
+import Router from 'next/router';
+import NProgress from 'nprogress';
+
+Router.onRouteChangeStart = url => {
+  console.warn(url);
+  NProgress.start();
+};
+
+Router.onRouteChangeComplete = () => NProgress.done();
+Router.onRouteChangeError = () => NProgress.done();
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -39,6 +50,13 @@ const Footer = styled.footer`
 
 const Index = ({ children, title }) => (
   <LayoutContainer>
+    <Head>
+      <title>NeatProfolio</title>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
+      />
+    </Head>
     <Header>
       <Link href="/">
         <StyledLink href="">Home</StyledLink>

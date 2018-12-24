@@ -17,10 +17,8 @@ const HireMe = () => (
   <Layout title="Hire ME">
     <Text>
       You can hire me at
-      <Link>
-        <StyledLink href="" href="mailto:elbelmonti@gamil.com">
-          elbelmonti@gamil.com
-        </StyledLink>
+      <Link href="mailto:elbelmonti@gmail.com">
+        <StyledLink href="">elbelmonti@gmail.com</StyledLink>
       </Link>
     </Text>
   </Layout>
