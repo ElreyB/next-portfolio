@@ -1,9 +1,8 @@
 import fetch from 'isomorphic-unfetch';
 import { Component } from 'react';
 import styled from 'styled-components';
-import Link from 'next/link';
 import Layout from '../components/Layout';
-
+import Error from './_error';
 const Text = styled.p``;
 
 const Image = styled.img`
@@ -17,13 +16,17 @@ export default class About extends Component {
 
   static async getInitialProps() {
     const responds = await fetch('https://api.github.com/users/elreyb');
+    const statusCode = responds.status > 200 ? responds.status : false;
     const data = await responds.json();
 
-    return { user: data };
+    return { user: data, statusCode };
   }
 
   render() {
-    const { user } = this.props;
+    const { user, statusCode } = this.props;
+    if (statusCode) {
+      return <Error statusCode={statusCode} />;
+    }
     return (
       <Layout title="About">
         <Text>A Javescript programmer: {user.name}</Text>
