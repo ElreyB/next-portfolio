@@ -1,6 +1,14 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 // Import styled components ServerStyleSheet
-import { ServerStyleSheet } from 'styled-components';
+import { ServerStyleSheet, createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    font-size: 110%
+    background: #f0f0f0;
+  }
+`;
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -21,16 +29,27 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html>
+      <html ln="en">
         <Head>
-          <title>My page</title>
+          <meta
+            name="description"
+            content="A site for my programming porfolio"
+          />
+          <meta charSet="utf-8" />
+          <mete name="robots" content="noindex, nofollow" />
+          <neta name="viewport" content="width=device-width" />
           {/* Step 5: Output the styles in the head  */}
           {this.props.styleTags}
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
+          />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
+        <GlobalStyle />
       </html>
     );
   }

@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import Link from 'next/link';
 import Head from 'next/head';
 import Router from 'next/router';
@@ -11,14 +11,6 @@ Router.onRouteChangeStart = url => {
 
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    font-size: 110%
-    background: #f0f0f0;
-  }
-`;
 
 const LayoutContainer = styled.div`
   display: flex;
@@ -52,10 +44,6 @@ const Index = ({ children, title }) => (
   <LayoutContainer>
     <Head>
       <title>NeatProfolio</title>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
-      />
     </Head>
     <Header>
       <Link href="/">
@@ -71,7 +59,6 @@ const Index = ({ children, title }) => (
     <Title>{title}</Title>
     {children}
     <Footer>&copy; {new Date().getFullYear()} </Footer>
-    <GlobalStyle />
   </LayoutContainer>
 );
 
