@@ -55,6 +55,9 @@ const Index = ({ children, title }) => (
       <Link href="/hireme">
         <StyledLink href="">Contact</StyledLink>
       </Link>
+      <Link href="/blog">
+        <StyledLink href="">Blog</StyledLink>
+      </Link>
     </Header>
     <Title>{title}</Title>
     {children}
