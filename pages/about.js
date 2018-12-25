@@ -10,10 +10,6 @@ const Image = styled.img`
 `;
 
 export default class About extends Component {
-  // state = {
-  //   user: null
-  // };
-
   static async getInitialProps() {
     const responds = await fetch('https://api.github.com/users/elreyb');
     const statusCode = responds.status > 200 ? responds.status : false;
